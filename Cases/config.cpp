@@ -3,38 +3,98 @@ class CfgPatches
 	class Orden_Weapon_Case
 	{
 		units[] = {"Orden_Weapon_Case"};
-		weapons[] = {};
+		weapons[] = {"Rifle_Base"};
 		requiredVersion = 0.1;
-		requiredAddons[] = {"DZ_Data","DZ_Gear_Containers"};
+		requiredAddons[] = {"DZ_Data","DZ_Gear_Containers","DZ_Weapons_Firearms"};
 	};
 };
 class CfgSlots
 {
-	class Slot_Weapon1
+	class Slot_weaponProxy
 	{
-		name = "Weapon1";
-		displayName = "Weapon1";
+		name = "weaponProxy";
+		displayName = "weaponProxy";
 		//selection="Ammocan_1";		
 		ghostIcon = "cat_common_cargo";
 	};
-	class Slot_Weapon2
+	class Slot_weaponProxy2
 	{
-		name = "Weapon2";
-		displayName = "Weapon2";
+		name = "weaponProxy2";
+		displayName = "weaponProxy2";
 		//selection="Ammocan.002";		
 	};
-	class Slot_Weapon3
+	class Slot_weaponProxy3
 	{
-		name = "Weapon3";
-		displayName = "Weapon3";
+		name = "weaponProxy3";
+		displayName = "weaponProxy3";
 		//selection="Ammocan003";		
 	};
-	class Slot_Weapon4
+	class Slot_weaponProxy4
 	{
-		name = "Weapon4";
-		displayName = "Weapon4";
+		name = "weaponProxy4";
+		displayName = "weaponProxy4";
 		//selection="Ammocan003";		
 	};
+};
+class CfgWeapons
+{
+	class RifleCore;
+	class Rifle_Base: RifleCore
+	{
+		inventorySlot[]=
+		{
+			"Shoulder",
+			"Melee",
+			"kuroakitaGUN1",
+			"kuroakitaGUN2",
+			"kuroakitaGUN3",
+			"kuroakitaGUN4",
+			"kuroakitaGUN5",
+			"kuroakitaGUN6",
+			"kuroakitaGUN7",
+			"kuroakitaGUN8",
+			"kuroakitaGUN9",
+			"kuroakitaGUN10",
+			"kuroakitaGUN11",
+			"kuroakitaGUN12",
+			"Shoulder1",
+			"Shoulder2",
+			"Shoulder3",
+			"Shoulder4",
+			"Shoulder5",
+			"Shoulder6",
+			"Shoulder7",
+			"Shoulder8",
+			"Shoulder9",
+			"Shoulder10",
+			"Shoulder11",
+			"Shoulder12",
+			"Shoulder13",
+			"Shoulder14",
+			"Shoulder15",
+			"Shoulder16",
+			"Shoulder17",
+			"Shoulder18",
+			"Shoulder19",
+			"Shoulder20",
+			"Shoulder21",
+			"Shoulder22",
+			"Shoulder23",
+			"Shoulder24",
+			"Shoulder25",
+			"Shoulder26",
+			"Shoulder27",
+			"Shoulder28",
+			"Shoulder29",
+			"Shoulder30",
+			"Shoulder111",
+			"Shoulder112",
+			"weaponProxy",
+			"weaponProxy2",
+			"weaponProxy3",
+			"weaponProxy4"
+		};
+	};		
 };
 class CfgVehicles
 {
@@ -138,7 +198,7 @@ class CfgVehicles
 			};	
         };	
 		
-		attachments[] = { "Weapon1", "Weapon2", "Weapon3", "Weapon4" };
+		attachments[] = { "weaponProxy", "weaponProxy2", "weaponProxy3", "weaponProxy4" };
 		class GUIInventoryAttachmentsProps {
 			class Rifle1
 			{
@@ -146,7 +206,7 @@ class CfgVehicles
 				description = "";
 				attachmentSlots[] =
 				{
-					"Weapon1"	
+					"weaponProxy"	
 				};
 				icon = "shoulderleft";
 			};
@@ -156,7 +216,7 @@ class CfgVehicles
 				description = "";
 				attachmentSlots[] =
 				{
-					"Weapon2"
+					"weaponProxy2"
 				};
 				icon = "shoulderleft";
 			};
@@ -166,7 +226,7 @@ class CfgVehicles
 				description = "";
 				attachmentSlots[] =
 				{
-					"Weapon1"
+					"weaponProxy3"
 				};
 				icon = "shoulderleft";
 			};
@@ -176,7 +236,7 @@ class CfgVehicles
 				description = "";
 				attachmentSlots[] =
 				{
-					"Weapon1"
+					"weaponProxy4"
 				};
 				icon = "shoulderleft";
 			};
@@ -213,40 +273,40 @@ class CfgNonAIVehicles
 		shadow = 1;
 		reversed = 1;
 	};
-	class Proxyweapon1 : ProxyPart
+	class ProxyweaponProxy : ProxyPart
 	{
-		model = "OrdenItems\Items\Ammobox\weaponProxy.p3d";
+		model = "OrdenWeaponCase\Cases\weaponProxy.p3d";
 		scope = 2;
 		inventorySlot[] =
 		{
-			"Weapon1"
+			"weaponProxy"
 		};
 	};
-	class Proxyweapon2 : ProxyPart
+	class ProxyweaponProxy2 : ProxyPart
 	{
-		model = "OrdenItems\Items\Ammobox\weaponProxy.p3d";
+		model = "OrdenWeaponCase\Cases\weaponProxy2.p3d";
 		scope = 2;
 		inventorySlot[] =
 		{
-			"Weapon2"
+			"weaponProxy2"
 		};
 	};
-	class Proxyweapon3 : ProxyPart
+	class ProxyweaponProxy3 : ProxyPart
 	{
-		model = "OrdenItems\Items\Ammobox\weaponProxy.p3d";
+		model = "OrdenWeaponCase\Cases\weaponProxy3.p3d";
 		scope = 2;
 		inventorySlot[] =
 		{
-			"Weapon3"
+			"weaponProxy3"
 		};
 	};
-	class Proxyweapon4 : ProxyPart
+	class ProxyweaponProxy4 : ProxyPart
 	{
-		model = "OrdenItems\Items\Ammobox\weaponProxy.p3d";
+		model = "OrdenWeaponCase\Cases\weaponProxy4.p3d";
 		scope = 2;
 		inventorySlot[] =
 		{
-			"Weapon4"
+			"weaponProxy4"
 		};
 	};
 	/*
