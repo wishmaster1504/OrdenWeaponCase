@@ -20,7 +20,7 @@ class Orden_Weapon_Case : Container_Base
 		RegisterNetSyncVariableBool("m_Openable.m_IsOpened"); 
 		RegisterNetSyncVariableBool("m_IsSoundSynchRemote");
 		RegisterNetSyncVariableBool("m_IsPlaceSound");
-		RegisterNetSyncVariableBool("m_Drawer_Handle_Up");
+		//RegisterNetSyncVariableBool("m_Drawer_Handle_Up");
 	}
 	
 	override void EEInit()
@@ -39,6 +39,7 @@ class Orden_Weapon_Case : Container_Base
 		return 110;
 	}
 	
+	/*
 	override void OnStoreSave( ParamsWriteContext ctx )
 	{   
 		super.OnStoreSave( ctx );
@@ -84,7 +85,7 @@ class Orden_Weapon_Case : Container_Base
 		
 		return true;
 	}
-	 
+	 */
 
 	override void Open()
 	{ 
@@ -203,13 +204,13 @@ class Orden_Weapon_Case : Container_Base
 			}
 			 
 			// звук поднятия или опускания ручки
-			if (isDrawerUP() && IsSoundSynchRemoteDrawer() && !IsBeingPlaced() ) 
+			if (isDrawerUP() && IsSoundSynchRemoteDrawer() && !IsBeingPlaced() )
 			{
 				 
 				SoundWeaponCaseDrawerUpPlay();
 
 			}
-			if (!isDrawerUP() && IsSoundSynchRemoteDrawer() && !IsBeingPlaced() ) 
+			if (!isDrawerUP() && IsSoundSynchRemoteDrawer() && !IsBeingPlaced() )
 			{
 				 
 				SoundWeaponCaseDrawerDownPlay();
@@ -273,11 +274,11 @@ class Orden_Weapon_Case : Container_Base
 	
 	override bool CanPutInCargo( EntityAI parent )
 	{
-		//if( !super.CanPutInCargo(parent) ) {return false;}		
-		//if ( GetNumberOfItems() == 0 && !IsOpen() )
-		//{
-		//	return true;
-		//}
+		if( !super.CanPutInCargo(parent) ) {return false;}		
+		if ( GetNumberOfItems() == 0 && !IsOpen() && isDrawerUP())
+		{
+			return true;
+		}
 		return false;
 	}
 	
@@ -310,10 +311,7 @@ class Orden_Weapon_Case : Container_Base
 		return IsOpen();
 	}
 	
-	override bool CanReceiveItemIntoHands(EntityAI item_to_hands)
-	{
-		return false;
-	}
+
 
  
 
@@ -400,7 +398,7 @@ class Orden_Weapon_Case : Container_Base
 		AddAction(ActionCloseBox); 	
 		AddAction(ActionDrawerUp);		
 		AddAction(ActionDrawerDown);	
-		AddAction(ActionTakeItemToHands);	
+		//AddAction(ActionTakeItemToHands);	
 	}
 
 };

@@ -118,7 +118,7 @@ class CfgVehicles
         carveNavmesh = 1;
         canBeDigged = 0;
         heavyItem = 1;
-        weight = 10000;
+        weight = 5000;
         itemSize[] = {3, 8};
         itemBehaviour = 0;
         physLayer = "item_large";
