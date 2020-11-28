@@ -9,7 +9,8 @@ class Orden_Weapon_Case : Container_Base
 	private bool g_WtrLog = true; // true - логировать (отключить для релиза)
 	private string g_filePath = "$profile:WishLogFile.txt"; // C:\Users\Алексей\AppData\Local\DayZ\WishLogFile.txt
 
-	
+
+
 	void Orden_Weapon_Case()
 	{
 		m_BarrelOpener = new Timer();
@@ -309,7 +310,13 @@ class Orden_Weapon_Case : Container_Base
 		return IsOpen();
 	}
 	
-	
+	override bool CanReceiveItemIntoHands(EntityAI item_to_hands)
+	{
+		return false;
+	}
+
+ 
+
 	bool isDrawerUP()
 	{
 	  

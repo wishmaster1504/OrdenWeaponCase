@@ -119,7 +119,7 @@ class CfgVehicles
         canBeDigged = 0;
         heavyItem = 1;
         weight = 10000;
-        itemSize[] = {1, 1};
+        itemSize[] = {3, 8};
         itemBehaviour = 0;
         physLayer = "item_large";
         allowOwnedCargoManipulation = 1;
