@@ -1,20 +1,19 @@
 private    ref Ultima_Server_Class_Logs    Log = new Ultima_Server_Class_Logs();
-//WrtiteToLogFile("MESSAGE");
+//WrtiteToLogFile("MESSAGE"); - вызов функции записи в лог
 
 class Orden_Weapon_Case : Container_Base
 { 
-	private bool m_Drawer_Handle_Up = false; // ручка кейса опущена
+	private bool m_Drawer_Handle_Up; // ручка кейса опущена
 	private ref Timer m_BarrelOpener;
-	protected ref OpenableBehaviour m_Openable; 
+	protected ref OpenableBehaviour m_Openable;
 	private bool g_WtrLog = true; // true - логировать (отключить для релиза)
 	private string g_filePath = "$profile:WishLogFile.txt"; // C:\Users\Алексей\AppData\Local\DayZ\WishLogFile.txt
 
-
-
+	
 	void Orden_Weapon_Case()
 	{
 		m_BarrelOpener = new Timer();
-
+		m_Drawer_Handle_Up = false;
 		m_Openable = new OpenableBehaviour(false);
 		
 		RegisterNetSyncVariableBool("m_Openable.m_IsOpened"); 
@@ -39,53 +38,61 @@ class Orden_Weapon_Case : Container_Base
 		return 110;
 	}
 	
-	/*
 	override void OnStoreSave( ParamsWriteContext ctx )
 	{   
 		super.OnStoreSave( ctx );
 		
-		ctx.Write( m_Openable.IsOpened() ); 
-		ctx.Write( m_Drawer_Handle_Up );		
+		//ctx.Write( m_Openable.IsOpened() ); 
+		//ctx.Write( m_Drawer_Handle_Up );		
 	}
 	
 	override bool OnStoreLoad( ParamsReadContext ctx, int version )
 	{
 		if ( !super.OnStoreLoad( ctx, version ) )
 			return false;
-		
-		bool opened;
-		//bool locked;
-		bool drawer_Handle; 
-		 
-		
-		if ( version >= 110 && !ctx.Read( opened ) && !ctx.Read( drawer_Handle )) //&& !ctx.Read( locked ) )
-		{
-			return false;
-		}
-		
-		if ( opened )
-		{
-			Open();
-		}
-		else
-		{
-			Close();
-		}
-		
-		 
-		if (drawer_Handle)
-		{
-		   DrawerUp();	 
-		}
-		else
-		{
-		   DrawerDown();
-		}
-	
-		
+
+		// появляется всегда закрытым
+		m_Openable.Close();
+		Close();
+		DrawerDown();
+
 		return true;
+
+		
+		//
+		//bool opened;
+		////bool locked;
+		//bool drawer_Handle; 
+		// 
+		//
+		//if ( version >= 110 && !ctx.Read( opened ) && !ctx.Read( drawer_Handle )) //&& !ctx.Read( locked ) )
+		//{
+		//	return false;
+		//}
+		//
+		//if ( opened )
+		//{
+		//	Open();
+		//}
+		//else
+		//{
+		//	Close();
+		//}
+		//
+		// 
+		//if (drawer_Handle)
+		//{
+		//   DrawerUp();	 
+		//}
+		//else
+		//{
+		//   DrawerDown();
+		//}
+	
+		//
+		//return true;
 	}
-	 */
+	 
 
 	override void Open()
 	{ 
@@ -204,13 +211,13 @@ class Orden_Weapon_Case : Container_Base
 			}
 			 
 			// звук поднятия или опускания ручки
-			if (isDrawerUP() && IsSoundSynchRemoteDrawer() && !IsBeingPlaced() )
+			if (isDrawerUP() && IsSoundSynchRemoteDrawer() && !IsBeingPlaced() ) 
 			{
 				 
 				SoundWeaponCaseDrawerUpPlay();
 
 			}
-			if (!isDrawerUP() && IsSoundSynchRemoteDrawer() && !IsBeingPlaced() )
+			if (!isDrawerUP() && IsSoundSynchRemoteDrawer() && !IsBeingPlaced() ) 
 			{
 				 
 				SoundWeaponCaseDrawerDownPlay();
@@ -274,8 +281,8 @@ class Orden_Weapon_Case : Container_Base
 	
 	override bool CanPutInCargo( EntityAI parent )
 	{
-		if( !super.CanPutInCargo(parent) ) {return false;}		
-		if ( GetNumberOfItems() == 0 && !IsOpen() && isDrawerUP())
+		if (!super.CanPutInCargo(parent)) { return false; }
+		if (GetNumberOfItems() == 0 && !IsOpen() && isDrawerUP())
 		{
 			return true;
 		}
@@ -311,10 +318,7 @@ class Orden_Weapon_Case : Container_Base
 		return IsOpen();
 	}
 	
-
-
- 
-
+	
 	bool isDrawerUP()
 	{
 	  
@@ -326,6 +330,11 @@ class Orden_Weapon_Case : Container_Base
 	void DrawerUp()
 	{
 		WrtiteToLogFile("FUNCTION DrawerUp START");
+
+		WrtiteToLogFile("DrawerUp - Handle_Up Befor : " + RetStringValFlag(m_Drawer_Handle_Up));
+		WrtiteToLogFile("DrawerUp - IsOpen  : " + RetStringValFlag(IsOpen()));
+		WrtiteToLogFile("DrawerUp - m_Openable.IsOpened()  : " + RetStringValFlag(m_Openable.IsOpened()));
+
 
 		m_Drawer_Handle_Up = true; 
 		//SoundSynchRemote();
@@ -394,11 +403,11 @@ class Orden_Weapon_Case : Container_Base
 	{
 		super.SetActions();
 		
-		AddAction(ActionOpenBox);
-		AddAction(ActionCloseBox); 	
+		AddAction(ActionOpenWCase);
+		AddAction(ActionCloseWCase); 	
 		AddAction(ActionDrawerUp);		
 		AddAction(ActionDrawerDown);	
-		//AddAction(ActionTakeItemToHands);	
+		AddAction(ActionTakeItemToHands);	
 	}
 
 };

@@ -1,6 +1,6 @@
-class ActionCloseBox: ActionInteractBase
+class ActionCloseWCase: ActionInteractBase
 {
-	void ActionCloseBox()
+	void ActionCloseWCase()
 	{
 		m_CommandUID = DayZPlayerConstants.CMD_ACTIONMOD_INTERACTONCE;
 		m_StanceMask = DayZPlayerConstants.STANCEMASK_ERECT | DayZPlayerConstants.STANCEMASK_CROUCH;

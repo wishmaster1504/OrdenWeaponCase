@@ -21,19 +21,22 @@ class CfgSlots
 	{
 		name = "weaponProxy2";
 		displayName = "weaponProxy2";
-		//selection="Ammocan.002";		
+		//selection="Ammocan.002";			
+		ghostIcon = "cat_common_cargo";
 	};
 	class Slot_weaponProxy3
 	{
 		name = "weaponProxy3";
 		displayName = "weaponProxy3";
 		//selection="Ammocan003";		
+		ghostIcon = "cat_common_cargo";
 	};
 	class Slot_weaponProxy4
 	{
 		name = "weaponProxy4";
 		displayName = "weaponProxy4";
 		//selection="Ammocan003";		
+		ghostIcon = "cat_common_cargo";
 	};
 };
 class CfgWeapons

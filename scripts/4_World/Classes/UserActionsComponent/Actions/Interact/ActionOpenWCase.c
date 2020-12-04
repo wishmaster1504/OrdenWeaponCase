@@ -1,6 +1,6 @@
-class ActionOpenBox: ActionInteractBase
+class ActionOpenWCase: ActionInteractBase
 {
-	void ActionOpenBox()
+	void ActionOpenWCase()
 	{
 		m_CommandUID = DayZPlayerConstants.CMD_ACTIONMOD_INTERACTONCE;
 		m_StanceMask = DayZPlayerConstants.STANCEMASK_ERECT | DayZPlayerConstants.STANCEMASK_CROUCH;
