@@ -200,7 +200,18 @@ class CfgVehicles
 			   animPeriod=1;
 			};	
         };	
-		
+
+		class DamageSystem
+		{
+			class GlobalHealth
+			{
+				class Health
+				{
+					hitpoints = 100000000000;
+				};
+			};
+		};
+
 		attachments[] = { "weaponProxy", "weaponProxy2", "weaponProxy3", "weaponProxy4" };
 		class GUIInventoryAttachmentsProps {
 			class Rifle1

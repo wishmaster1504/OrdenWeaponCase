@@ -3,7 +3,7 @@ private    ref Ultima_Server_Class_Logs    Log = new Ultima_Server_Class_Logs();
 
 class Orden_Weapon_Case : Container_Base
 { 
-	private bool m_Drawer_Handle_Up; // ручка кейса опущена
+	private bool m_Drawer_Handle_Up = false; // ручка кейса опущена
 	private ref Timer m_BarrelOpener;
 	protected ref OpenableBehaviour m_Openable;
 	private bool g_WtrLog = true; // true - логировать (отключить для релиза)
@@ -13,13 +13,13 @@ class Orden_Weapon_Case : Container_Base
 	void Orden_Weapon_Case()
 	{
 		m_BarrelOpener = new Timer();
-		m_Drawer_Handle_Up = false;
+		 
 		m_Openable = new OpenableBehaviour(false);
 		
 		RegisterNetSyncVariableBool("m_Openable.m_IsOpened"); 
 		RegisterNetSyncVariableBool("m_IsSoundSynchRemote");
 		RegisterNetSyncVariableBool("m_IsPlaceSound");
-		//RegisterNetSyncVariableBool("m_Drawer_Handle_Up");
+		RegisterNetSyncVariableBool("m_Drawer_Handle_Up");
 	}
 	
 	override void EEInit()
@@ -38,60 +38,60 @@ class Orden_Weapon_Case : Container_Base
 		return 110;
 	}
 	
-	override void OnStoreSave( ParamsWriteContext ctx )
-	{   
-		super.OnStoreSave( ctx );
-		
-		//ctx.Write( m_Openable.IsOpened() ); 
-		//ctx.Write( m_Drawer_Handle_Up );		
-	}
+	//override void OnStoreSave( ParamsWriteContext ctx )
+	//{   
+	//	super.OnStoreSave( ctx );
+	//	
+	//	//ctx.Write( m_Openable.IsOpened() ); 
+	//	//ctx.Write( m_Drawer_Handle_Up );		
+	//}
 	
-	override bool OnStoreLoad( ParamsReadContext ctx, int version )
-	{
-		if ( !super.OnStoreLoad( ctx, version ) )
-			return false;
+	//override bool OnStoreLoad( ParamsReadContext ctx, int version )
+	//{
+	//	if ( !super.OnStoreLoad( ctx, version ) )
+	//		return false;
 
-		// появляется всегда закрытым
-		m_Openable.Close();
-		Close();
-		DrawerDown();
+	//	// появляется всегда закрытым
+	//	m_Openable.Close();
+	//	Close();
+	//	DrawerDown();
 
-		return true;
+	//	return true;
 
-		
-		//
-		//bool opened;
-		////bool locked;
-		//bool drawer_Handle; 
-		// 
-		//
-		//if ( version >= 110 && !ctx.Read( opened ) && !ctx.Read( drawer_Handle )) //&& !ctx.Read( locked ) )
-		//{
-		//	return false;
-		//}
-		//
-		//if ( opened )
-		//{
-		//	Open();
-		//}
-		//else
-		//{
-		//	Close();
-		//}
-		//
-		// 
-		//if (drawer_Handle)
-		//{
-		//   DrawerUp();	 
-		//}
-		//else
-		//{
-		//   DrawerDown();
-		//}
-	
-		//
-		//return true;
-	}
+	//	
+	//	//
+	//	//bool opened;
+	//	////bool locked;
+	//	//bool drawer_Handle; 
+	//	// 
+	//	//
+	//	//if ( version >= 110 && !ctx.Read( opened ) && !ctx.Read( drawer_Handle )) //&& !ctx.Read( locked ) )
+	//	//{
+	//	//	return false;
+	//	//}
+	//	//
+	//	//if ( opened )
+	//	//{
+	//	//	Open();
+	//	//}
+	//	//else
+	//	//{
+	//	//	Close();
+	//	//}
+	//	//
+	//	// 
+	//	//if (drawer_Handle)
+	//	//{
+	//	//   DrawerUp();	 
+	//	//}
+	//	//else
+	//	//{
+	//	//   DrawerDown();
+	//	//}
+	//
+	//	//
+	//	//return true;
+	//}
 	 
 
 	override void Open()
