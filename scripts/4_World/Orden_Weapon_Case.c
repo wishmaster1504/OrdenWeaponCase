@@ -31,10 +31,6 @@ class Orden_Weapon_Case : Container_Base
 		GetInventory().LockInventory(HIDE_INV_FROM_SCRIPT);
 	}
 	
-	/*override bool IsHeavyBehaviour()
-	{
-		return true;
-	}*/
 	
 	override int GetDamageSystemVersionChange()
 	{
@@ -133,8 +129,6 @@ class Orden_Weapon_Case : Container_Base
 		if ( IsOpen() )
 		{
 			SetAnimationPhase("Clap1",1); 
-			//[] spawn {sleep 0.5;};
-			//MySleepFunc(); 
 			SetAnimationPhase("Clap2",1); 
 			SetAnimationPhase("Clap3",1); 
 			SetAnimationPhase("Clap4",1); 
@@ -160,33 +154,7 @@ class Orden_Weapon_Case : Container_Base
 		}
 		 
 	}
- //   int GetCurrentTime()
-	//{
-	//	int hour, minute, second;
-	//	GetHourMinuteSecond(hour, minute, second);
-	//	//string time = hour.ToStringLen(2) + ":" + minute.ToStringLen(2) + ":" + second.ToStringLen(2);
-	//	return hour*3600 + minute*60 + second;
-	//}
-	//
-	//void MySleepFunc()
-	//{
-	//	int curTime, stopTime;
-	//	
-	//	curTime = GetCurrentTime();
-	//	stopTime = curTime + 1;
-	//	while (curTime <= stopTime) 
-	//	{
-	//		curTime = GetCurrentTime();
-	//	}
-	//}
 
-	//string GetCurTime()
-	//{
-	//	int hour, minute, second;
-	//	GetHourMinuteSecond(hour, minute, second);
-	//	string time = hour.ToStringLen(2) + ":" + minute.ToStringLen(2) + ":" + second.ToStringLen(2);
-	//	return time;
-	//}
 	
 	override void OnVariablesSynchronized()
 	{
@@ -230,8 +198,6 @@ class Orden_Weapon_Case : Container_Base
 		
 		UpdateVisualState();
 
-		//logFile.WrtiteToLogFile("FUNCTION OnVariablesSynchronized END");
-
 	}
 	
 	void SoundWeaponCaseOpenPlay()
@@ -260,7 +226,6 @@ class Orden_Weapon_Case : Container_Base
 		 
 		EffectSound sound =	SEffectManager.PlaySound( "weapon_case_drawerup_SoundSet", GetPosition() );
 		sound.SetSoundAutodestroy( true );
-		//SetDrawerActionEnabled(false);
 
 		logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseDrawerUpPlay END");
 	}
@@ -271,7 +236,6 @@ class Orden_Weapon_Case : Container_Base
 
 		EffectSound sound =	SEffectManager.PlaySound( "weapon_case_drawerdown_SoundSet", GetPosition() );
 		sound.SetSoundAutodestroy( true );
-		//SetDrawerActionEnabled(false);
 
 		logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseDrawerDownPlay END");
 
@@ -358,28 +322,7 @@ class Orden_Weapon_Case : Container_Base
 
 	}
 	  
-	//string RetStringValFlag(bool value)
-	//{ 
-	//	if (value)
-	//	{
-	//		return "TRUE";
-	//	}
-	//	else
-	//	{
-	//		return "FALSE";
-	//	}
 
-	//}
-
-
-	// Запись в свой лог файл
-	//void logFile.WrtiteToLogFile(string message)
-	//{
-	//	if (g_WtrLog) // если включено логирование
-	//	{
-	//		Log.SaveLog(g_filePath, GetCurTime() + "  :  " + message);
-	//	}
-	//}
 
 	//================================================================
 	// ADVANCED PLACEMENT
