@@ -32,7 +32,7 @@ class CfgSoundShaders
 	class weapon_case_open_SoundShader: baseWeaponCase_SoundShader
 	{
 		samples[] = {{"OrdenWeaponCase\Sounds\WeaponCase\door_open_scrip_1",1}};
-		volume = 0.25;
+		volume = 0.5;
 	};
 	
 	class weapon_case_close_SoundShader: baseWeaponCase_SoundShader

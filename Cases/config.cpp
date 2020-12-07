@@ -5,7 +5,7 @@ class CfgPatches
 		units[] = {"Orden_Weapon_Case"};
 		weapons[] = {"Rifle_Base"};
 		requiredVersion = 0.1;
-		requiredAddons[] = {"DZ_Data","DZ_Gear_Containers","DZ_Weapons_Firearms"};
+		requiredAddons[] = {"DZ_Data","DZ_Gear_Containers","DZ_Weapons_Firearms","OrdenTemplates"}; // OrdenWeaponCaseTemplate
 	};
 };
 class CfgSlots
@@ -42,7 +42,9 @@ class CfgSlots
 class CfgWeapons
 {
 	class RifleCore;
+	class Rifle_Base_Template;
 	class Rifle_Base: RifleCore
+	//class Rifle_Base : Rifle_Base_Template{};
 	{
 		inventorySlot[]=
 		{

@@ -1,14 +1,13 @@
-private    ref Ultima_Server_Class_Logs    Log = new Ultima_Server_Class_Logs();
-//WrtiteToLogFile("MESSAGE"); - вызов функции записи в лог
+private    ref OrdenLogTemplate logFile = new OrdenLogTemplate();
+//logFile.WrtiteToLogFile("MESSAGE"); - вызов функции записи в лог
 
 class Orden_Weapon_Case : Container_Base
+//class Orden_Weapon_Case : OrdenCaseTemplates
 { 
 	private bool m_Drawer_Handle_Up = false; // ручка кейса опущена
 	private ref Timer m_BarrelOpener;
-	protected ref OpenableBehaviour m_Openable;
-	private bool g_WtrLog = true; // true - логировать (отключить для релиза)
-	private string g_filePath = "$profile:WishLogFile.txt"; // C:\Users\Алексей\AppData\Local\DayZ\WishLogFile.txt
-
+	protected ref OpenableBehaviour m_Openable; 
+	  
 	
 	void Orden_Weapon_Case()
 	{
@@ -20,6 +19,10 @@ class Orden_Weapon_Case : Container_Base
 		RegisterNetSyncVariableBool("m_IsSoundSynchRemote");
 		RegisterNetSyncVariableBool("m_IsPlaceSound");
 		RegisterNetSyncVariableBool("m_Drawer_Handle_Up");
+
+		// параметры логирования в файл
+		logFile.SetLogFlag(true); // включаем логирование в файл
+		logFile.SetFilePath("$profile:WishLogFile.txt"); // в свой файл
 	}
 	
 	override void EEInit()
@@ -157,33 +160,33 @@ class Orden_Weapon_Case : Container_Base
 		}
 		 
 	}
-    int GetCurrentTime()
-	{
-		int hour, minute, second;
-		GetHourMinuteSecond(hour, minute, second);
-		//string time = hour.ToStringLen(2) + ":" + minute.ToStringLen(2) + ":" + second.ToStringLen(2);
-		return hour*3600 + minute*60 + second;
-	}
-	
-	void MySleepFunc()
-	{
-		int curTime, stopTime;
-		
-		curTime = GetCurrentTime();
-		stopTime = curTime + 1;
-		while (curTime <= stopTime) 
-		{
-			curTime = GetCurrentTime();
-		}
-	}
+ //   int GetCurrentTime()
+	//{
+	//	int hour, minute, second;
+	//	GetHourMinuteSecond(hour, minute, second);
+	//	//string time = hour.ToStringLen(2) + ":" + minute.ToStringLen(2) + ":" + second.ToStringLen(2);
+	//	return hour*3600 + minute*60 + second;
+	//}
+	//
+	//void MySleepFunc()
+	//{
+	//	int curTime, stopTime;
+	//	
+	//	curTime = GetCurrentTime();
+	//	stopTime = curTime + 1;
+	//	while (curTime <= stopTime) 
+	//	{
+	//		curTime = GetCurrentTime();
+	//	}
+	//}
 
-	string GetCurTime()
-	{
-		int hour, minute, second;
-		GetHourMinuteSecond(hour, minute, second);
-		string time = hour.ToStringLen(2) + ":" + minute.ToStringLen(2) + ":" + second.ToStringLen(2);
-		return time;
-	}
+	//string GetCurTime()
+	//{
+	//	int hour, minute, second;
+	//	GetHourMinuteSecond(hour, minute, second);
+	//	string time = hour.ToStringLen(2) + ":" + minute.ToStringLen(2) + ":" + second.ToStringLen(2);
+	//	return time;
+	//}
 	
 	override void OnVariablesSynchronized()
 	{
@@ -227,50 +230,50 @@ class Orden_Weapon_Case : Container_Base
 		
 		UpdateVisualState();
 
-		//WrtiteToLogFile("FUNCTION OnVariablesSynchronized END");
+		//logFile.WrtiteToLogFile("FUNCTION OnVariablesSynchronized END");
 
 	}
 	
 	void SoundWeaponCaseOpenPlay()
 	{
-		WrtiteToLogFile("FUNCTION SoundWeaponCaseOpenPlay START");
+		logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseOpenPlay START");
 		 
 		EffectSound sound =	SEffectManager.PlaySound( "weapon_case_open_SoundSet", GetPosition() );
 		sound.SetSoundAutodestroy( true );
 
-		WrtiteToLogFile("FUNCTION SoundWeaponCaseOpenPlay END");
+		logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseOpenPlay END");
 	}
 
 	void SoundWeaponCaseClosePlay()
 	{
-		WrtiteToLogFile("FUNCTION SoundWeaponCaseClosePlay START");
+		logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseClosePlay START");
 		 
 		EffectSound sound =	SEffectManager.PlaySound( "weapon_case_close_SoundSet", GetPosition() );
 		sound.SetSoundAutodestroy( true );
 
-		WrtiteToLogFile("FUNCTION SoundWeaponCaseClosePlay END");
+		logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseClosePlay END");
 	}
 	 
 	void SoundWeaponCaseDrawerUpPlay()
 	{
-		WrtiteToLogFile("FUNCTION SoundWeaponCaseDrawerUpPlay START");
+		logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseDrawerUpPlay START");
 		 
 		EffectSound sound =	SEffectManager.PlaySound( "weapon_case_drawerup_SoundSet", GetPosition() );
 		sound.SetSoundAutodestroy( true );
 		//SetDrawerActionEnabled(false);
 
-		WrtiteToLogFile("FUNCTION SoundWeaponCaseDrawerUpPlay END");
+		logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseDrawerUpPlay END");
 	}
 
 	void SoundWeaponCaseDrawerDownPlay()
 	{
-		WrtiteToLogFile("FUNCTION SoundWeaponCaseDrawerDownPlay START");  
+		logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseDrawerDownPlay START");  
 
 		EffectSound sound =	SEffectManager.PlaySound( "weapon_case_drawerdown_SoundSet", GetPosition() );
 		sound.SetSoundAutodestroy( true );
 		//SetDrawerActionEnabled(false);
 
-		WrtiteToLogFile("FUNCTION SoundWeaponCaseDrawerDownPlay END");
+		logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseDrawerDownPlay END");
 
 	}
 	 
@@ -329,26 +332,21 @@ class Orden_Weapon_Case : Container_Base
 	
 	void DrawerUp()
 	{
-		WrtiteToLogFile("FUNCTION DrawerUp START");
-
-		WrtiteToLogFile("DrawerUp - Handle_Up Befor : " + RetStringValFlag(m_Drawer_Handle_Up));
-		WrtiteToLogFile("DrawerUp - IsOpen  : " + RetStringValFlag(IsOpen()));
-		WrtiteToLogFile("DrawerUp - m_Openable.IsOpened()  : " + RetStringValFlag(m_Openable.IsOpened()));
-
-
+		logFile.WrtiteToLogFile("FUNCTION DrawerUp START");
+		 
 		m_Drawer_Handle_Up = true; 
 		//SoundSynchRemote();
 		SoundSynchRemoteDrawer();
 
 		UpdateVisualState();
 
-		WrtiteToLogFile("FUNCTION DrawerUp END");
+		logFile.WrtiteToLogFile("FUNCTION DrawerUp END");
 
 	}
 	
 	void DrawerDown()
 	{
-		WrtiteToLogFile("FUNCTION DrawerDown START");
+		logFile.WrtiteToLogFile("FUNCTION DrawerDown START");
 
 		m_Drawer_Handle_Up = false; 
 		//SoundSynchRemote();
@@ -356,32 +354,32 @@ class Orden_Weapon_Case : Container_Base
 
 		UpdateVisualState();
 
-		WrtiteToLogFile("FUNCTION DrawerDown END");
+		logFile.WrtiteToLogFile("FUNCTION DrawerDown END");
 
 	}
 	  
-	string RetStringValFlag(bool value)
-	{ 
-		if (value)
-		{
-			return "TRUE";
-		}
-		else
-		{
-			return "FALSE";
-		}
+	//string RetStringValFlag(bool value)
+	//{ 
+	//	if (value)
+	//	{
+	//		return "TRUE";
+	//	}
+	//	else
+	//	{
+	//		return "FALSE";
+	//	}
 
-	}
+	//}
 
 
 	// Запись в свой лог файл
-	void WrtiteToLogFile(string message)
-	{
-		if (g_WtrLog) // если включено логирование
-		{
-			Log.SaveLog(g_filePath, GetCurTime() + "  :  " + message);
-		}
-	}
+	//void logFile.WrtiteToLogFile(string message)
+	//{
+	//	if (g_WtrLog) // если включено логирование
+	//	{
+	//		Log.SaveLog(g_filePath, GetCurTime() + "  :  " + message);
+	//	}
+	//}
 
 	//================================================================
 	// ADVANCED PLACEMENT
