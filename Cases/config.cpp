@@ -132,7 +132,7 @@ class CfgVehicles
         storageCategory = 1;    
         class Cargo
         {
-            itemsCargoSize[]={10,10};
+            itemsCargoSize[]={10,5}; // 50 слотов
             openable=0;
             allowOwnedCargoManipulation=1;
         };
