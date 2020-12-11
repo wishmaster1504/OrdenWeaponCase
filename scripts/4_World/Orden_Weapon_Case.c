@@ -201,23 +201,15 @@ class Orden_Weapon_Case : Container_Base
 	}
 	
 	void SoundWeaponCaseOpenPlay()
-	{
-		logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseOpenPlay START");
-		 
+	{ 
 		EffectSound sound =	SEffectManager.PlaySound( "weapon_case_open_SoundSet", GetPosition() );
-		sound.SetSoundAutodestroy( true );
-
-		logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseOpenPlay END");
+		sound.SetSoundAutodestroy( true ); 
 	}
 
 	void SoundWeaponCaseClosePlay()
-	{
-		logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseClosePlay START");
-		 
+	{ 
 		EffectSound sound =	SEffectManager.PlaySound( "weapon_case_close_SoundSet", GetPosition() );
-		sound.SetSoundAutodestroy( true );
-
-		logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseClosePlay END");
+		sound.SetSoundAutodestroy( true ); 
 	}
 	 
 	void SoundWeaponCaseDrawerUpPlay()

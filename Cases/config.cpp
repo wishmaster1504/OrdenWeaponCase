@@ -5,7 +5,15 @@ class CfgPatches
 		units[] = {"Orden_Weapon_Case"};
 		weapons[] = {"Rifle_Base"};
 		requiredVersion = 0.1;
-		requiredAddons[] = {"DZ_Data","DZ_Gear_Containers","DZ_Weapons_Firearms","OrdenTemplates"}; // OrdenWeaponCaseTemplate
+		requiredAddons[] = {"DZ_Data","DZ_Gear_Containers","DZ_Weapons_Firearms","OrdenTemplates",};  
+	};
+
+	class Orden_Weapon_Case_MagOptGl
+	{
+		units[] = { "Orden_Weapon_Case_MagOptGl" };
+		weapons[] = { "Rifle_Base", "Magazine_Base" };
+		requiredVersion = 0.1;
+		requiredAddons[] = { "DZ_Data","DZ_Gear_Containers","DZ_Weapons_Firearms","OrdenTemplates","DZ_Weapons_Magazines","DZ_Weapons_Optics" };
 	};
 };
 class CfgSlots
@@ -38,11 +46,75 @@ class CfgSlots
 		//selection="Ammocan003";		
 		ghostIcon = "cat_common_cargo";
 	};
+
+
+	class Slot_magProxy
+	{
+		name = "magProxy";
+		displayName = "magProxy";
+		selection="magProxy";		
+		ghostIcon = "cat_common_cargo";
+	};
+	class Slot_magProxy2
+	{
+		name = "magProxy2";
+		displayName = "magProxy2";
+		//selection = "magProxy2";
+		ghostIcon = "cat_common_cargo";
+	};
+	class Slot_magProxy3
+	{
+		name = "magProxy3";
+		displayName = "magProxy3";
+		//selection = "magProxy3";
+		ghostIcon = "cat_common_cargo";
+	};
+	class Slot_magProxy4
+	{
+		name = "magProxy4";
+		displayName = "magProxy4";
+		//selection = "magProxy4";
+		ghostIcon = "cat_common_cargo";
+	};
+
+	class Slot_optProxy1
+	{
+		name = "optProxy1";
+		displayName = "optProxy1";
+		//selection = "optProxy1";
+		ghostIcon = "cat_common_cargo";
+	};
+	class Slot_optProxy2
+	{
+		name = "optProxy2";
+		displayName = "optProxy2";
+		//selection = "optProxy2";
+		ghostIcon = "cat_common_cargo";
+	};
+
+	class Slot_glProxy1
+	{
+		name = "glProxy1";
+		displayName = "glProxy1";
+		//selection = "glProxy1";
+		ghostIcon = "cat_common_cargo";
+	};
+	class Slot_glProxy2
+	{
+		name = "glProxy2";
+		displayName = "glProxy2";
+		//selection = "glProxy2";
+		ghostIcon = "cat_common_cargo";
+	};
+
+
+
+
 };
 class CfgWeapons
 {
 	class RifleCore;
-	class Rifle_Base_Template;
+	//class Rifle_Base_Template;
 	class Rifle_Base: RifleCore
 	//class Rifle_Base : Rifle_Base_Template{};
 	{
@@ -99,14 +171,57 @@ class CfgWeapons
 			"weaponProxy3",
 			"weaponProxy4"
 		};
-	};		
+	};	
+
+
+	
 };
+
+class CfgMagazines 
+{
+	class DefaultMagazine;
+	class Magazine_Base;
+	class Orden_Magazine_Base : Magazine_Base
+	{
+		inventorySlot[] = { "magProxy", "magProxy2", "magProxy3", "magProxy4" };
+		cargoClass = "Magazine_Base"; // weaponOptics
+	};
+};
+
+	
+
+// OpticsInfoDefault
+// class OpticsInfo: OpticsInfoDefault{};
+// ItemOptics
+// ItemSuppressor
+
+
 class CfgVehicles
 {
+
+	//class AK_Suppressor;
+
 	class Inventory_Base;
 	class Container_Base;
 	class WorldContainer_Base;  
 	
+
+	//class HuntingOptic; 
+	class ItemOptics : Inventory_Base
+	{
+		inventorySlot[] = { "optProxy1", "optProxy2" };
+		//cargoClass = "ItemOptics"; // OpticsInfoDefault   Mag_AK101_30Rnd   AK_Suppressor
+		//cargoClass = "OpticsInfoDefault"; // HuntingOptic --> ItemOptics
+		cargoClass = "Inventory_Base";
+	};
+
+
+	class ItemSuppressor : Inventory_Base
+	{
+		inventorySlot[] = { "glProxy1", "glProxy2" };
+		cargoClass = "ItemSuppressor";
+	};
+
 	class Orden_Weapon_Case: Container_Base
 	{
 		scope = 2;
@@ -256,14 +371,71 @@ class CfgVehicles
 				};
 				icon = "shoulderleft";
 			};
-			/*class Ammocans {
-				name = "Кейсы";
-				description = "";
-				attachmentSlots[] = { "Ammocan","Ammocan3","Ammocan2" };
-			};*/
+		
 		};
 	};
 	
+
+
+	class Orden_Weapon_Case_MagOptGl : Orden_Weapon_Case
+	{
+		displayName = "Кейс для оружия с магазинами";
+		descriptionShort = "Кейс для оружия с магазинами";
+		model = "OrdenWeaponCase\Cases\WeaponCaseMagOptGl.p3d";
+
+
+		attachments[] = { "magProxy", "magProxy2", "magProxy3", "magProxy4", "optProxy1", "optProxy2", "glProxy1", "glProxy2","weaponProxy", "weaponProxy2" };
+		class GUIInventoryAttachmentsProps {
+
+			class Rifles
+			{
+				name = "Оружие";
+				description = "";
+				attachmentSlots[] =
+				{
+					//"weaponProxy3", "weaponProxy4"
+					"weaponProxy", "weaponProxy2"
+				};
+				icon = "shoulderleft";
+			};
+			class Mags
+			{
+				name = "Магазины";
+				description = "";
+				attachmentSlots[] =
+				{
+					"magProxy", "magProxy2", "magProxy3", "magProxy4"
+				};
+				//icon = "shoulderleft";
+			};
+
+			class Optics
+			{
+				name = "Оптика";
+				description = "";
+				attachmentSlots[] =
+				{
+					"optProxy1", "optProxy2"
+				};
+				icon = "shoulderleft";
+			};
+
+			class Suppressor // глушитель
+			{
+				name = "Глушители";
+				description = "";
+				attachmentSlots[] =
+				{
+					"glProxy1", "glProxy2"
+				};
+				//icon = "shoulderleft";
+			};
+
+		};
+
+	}; // Orden_Weapon_Case_MagOptGl
+
+
 };
 
 class CfgNonAIVehicles
@@ -325,23 +497,82 @@ class CfgNonAIVehicles
 			"weaponProxy4"
 		};
 	};
-	/*
-	class Proxyammocan2 : ProxyPart
+	// прокси для магазинов
+	class ProxymagProxy : ProxyPart
 	{
 		scope = 2;
 		inventorySlot[] =
 		{
-			"Ammocan2"
+			"magProxy"
 		};
-		model = "OrdenItems\Items\Ammobox\ammocan2.p3d";
+		model = "OrdenWeaponCase\Cases\magProxy.p3d";
 	};
-	class Proxyammocan3 : ProxyPart
+	class ProxymagProxy2 : ProxyPart
 	{
 		scope = 2;
 		inventorySlot[] =
 		{
-			"Ammocan3"
+			"magProxy2"
 		};
-		model = "OrdenItems\Items\Ammobox\ammocan3.p3d";
-	};*/
+		model = "OrdenWeaponCase\Cases\magProxy2.p3d";
+	};
+	class ProxymagProxy3 : ProxyPart
+	{
+		scope = 2;
+		inventorySlot[] =
+		{
+			"magProxy3"
+		};
+		model = "OrdenWeaponCase\Cases\magProxy3.p3d";
+	};
+	class ProxymagProxy4 : ProxyPart
+	{
+		scope = 2;
+		inventorySlot[] =
+		{
+			"magProxy4"
+		};
+		model = "OrdenWeaponCase\Cases\magProxy4.p3d";
+	};
+
+	// прокси для оптики
+	class ProxyoptProxy1 : ProxyPart
+	{
+		scope = 2;
+		inventorySlot[] =
+		{
+			"optProxy1"
+		};
+		model = "OrdenWeaponCase\Cases\optProxy1.p3d";
+	};
+	class ProxyoptProxy2 : ProxyPart
+	{
+		scope = 2;
+		inventorySlot[] =
+		{
+			"optProxy2"
+		};
+		model = "OrdenWeaponCase\Cases\optProxy2.p3d";
+	};
+// прокси для глушителей
+	class ProxyglProxy1 : ProxyPart
+	{
+		scope = 2;
+		inventorySlot[] =
+		{
+			"glProxy1"
+		};
+		model = "OrdenWeaponCase\Cases\glProxy1.p3d";
+	};
+	class ProxyglProxy2 : ProxyPart
+	{
+		scope = 2;
+		inventorySlot[] =
+		{
+			"glProxy2"
+		};
+		model = "OrdenWeaponCase\Cases\glProxy2.p3d";
+	};
+
+
 };
