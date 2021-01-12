@@ -5,7 +5,7 @@ class CfgPatches
 		units[] = {"Orden_Weapon_Case"};
 		weapons[] = {"Rifle_Base"};
 		requiredVersion = 0.1;
-		requiredAddons[] = {"DZ_Data","DZ_Gear_Containers","DZ_Weapons_Firearms","OrdenTemplates",};  
+		requiredAddons[] = {"DZ_Data","DZ_Gear_Containers","DZ_Weapons_Firearms","OrdenTemplates","DZ_Sounds_Weapons","DZ_Scripts" };
 	};
 
 	class Orden_Weapon_Case_MagOptGl
@@ -225,8 +225,8 @@ class CfgVehicles
 	class Orden_Weapon_Case: Container_Base
 	{
 		scope = 2;
-		displayName = "Кейс для оружия";
-		descriptionShort = "Кейс для оружия";
+		displayName = "$STR_cfgvehicles_Orden_Weapon_Case";
+		descriptionShort = "$STR_cfgvehicles_Orden_Weapon_Case";
 		model = "OrdenWeaponCase\Cases\WeaponCase.p3d";
 		SingleUseActions[] = {527};
         InteractActions[] = {1025, 1026};
