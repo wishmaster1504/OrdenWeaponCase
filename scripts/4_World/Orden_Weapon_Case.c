@@ -1,4 +1,4 @@
-private    ref OrdenLogTemplate logFile = new OrdenLogTemplate();
+//private    ref OrdenLogTemplate logFile = new OrdenLogTemplate();
 //logFile.WrtiteToLogFile("MESSAGE"); - вызов функции записи в лог
 
 class Orden_Weapon_Case : Container_Base
@@ -21,8 +21,8 @@ class Orden_Weapon_Case : Container_Base
 		RegisterNetSyncVariableBool("m_Drawer_Handle_Up");
 
 		// параметры логирования в файл
-		logFile.SetLogFlag(true); // включаем логирование в файл
-		logFile.SetFilePath("$profile:WishLogFile.txt"); // в свой файл
+		//logFile.SetLogFlag(true); // включаем логирование в файл
+		//logFile.SetFilePath("$profile:WishLogFile.txt"); // в свой файл
 	}
 	
 	override void EEInit()
@@ -202,42 +202,42 @@ class Orden_Weapon_Case : Container_Base
 	
 	void SoundWeaponCaseOpenPlay()
 	{
-		logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseOpenPlay START");
+		//logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseOpenPlay START");
 		 
 		EffectSound sound =	SEffectManager.PlaySound( "weapon_case_open_SoundSet", GetPosition() );
 		sound.SetSoundAutodestroy( true );
 
-		logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseOpenPlay END");
+		//logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseOpenPlay END");
 	}
 
 	void SoundWeaponCaseClosePlay()
 	{
-		logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseClosePlay START");
+		//logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseClosePlay START");
 		 
 		EffectSound sound =	SEffectManager.PlaySound( "weapon_case_close_SoundSet", GetPosition() );
 		sound.SetSoundAutodestroy( true );
 
-		logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseClosePlay END");
+		//logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseClosePlay END");
 	}
 	 
 	void SoundWeaponCaseDrawerUpPlay()
 	{
-		logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseDrawerUpPlay START");
+		//logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseDrawerUpPlay START");
 		 
 		EffectSound sound =	SEffectManager.PlaySound( "weapon_case_drawerup_SoundSet", GetPosition() );
 		sound.SetSoundAutodestroy( true );
 
-		logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseDrawerUpPlay END");
+		//logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseDrawerUpPlay END");
 	}
 
 	void SoundWeaponCaseDrawerDownPlay()
 	{
-		logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseDrawerDownPlay START");  
+		//logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseDrawerDownPlay START");  
 
 		EffectSound sound =	SEffectManager.PlaySound( "weapon_case_drawerdown_SoundSet", GetPosition() );
 		sound.SetSoundAutodestroy( true );
 
-		logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseDrawerDownPlay END");
+		//logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseDrawerDownPlay END");
 
 	}
 	 
@@ -296,7 +296,7 @@ class Orden_Weapon_Case : Container_Base
 	
 	void DrawerUp()
 	{
-		logFile.WrtiteToLogFile("FUNCTION DrawerUp START");
+		//logFile.WrtiteToLogFile("FUNCTION DrawerUp START");
 		 
 		m_Drawer_Handle_Up = true; 
 		//SoundSynchRemote();
@@ -304,13 +304,13 @@ class Orden_Weapon_Case : Container_Base
 
 		UpdateVisualState();
 
-		logFile.WrtiteToLogFile("FUNCTION DrawerUp END");
+		//logFile.WrtiteToLogFile("FUNCTION DrawerUp END");
 
 	}
 	
 	void DrawerDown()
 	{
-		logFile.WrtiteToLogFile("FUNCTION DrawerDown START");
+		//logFile.WrtiteToLogFile("FUNCTION DrawerDown START");
 
 		m_Drawer_Handle_Up = false; 
 		//SoundSynchRemote();
@@ -318,7 +318,7 @@ class Orden_Weapon_Case : Container_Base
 
 		UpdateVisualState();
 
-		logFile.WrtiteToLogFile("FUNCTION DrawerDown END");
+		//logFile.WrtiteToLogFile("FUNCTION DrawerDown END");
 
 	}
 	  
