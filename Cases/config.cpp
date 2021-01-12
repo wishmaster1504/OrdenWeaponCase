@@ -5,15 +5,15 @@ class CfgPatches
 		units[] = {"Orden_Weapon_Case"};
 		weapons[] = {"Rifle_Base"};
 		requiredVersion = 0.1;
-		requiredAddons[] = {"DZ_Data","DZ_Gear_Containers","DZ_Weapons_Firearms","OrdenTemplates","DZ_Sounds_Weapons","DZ_Scripts" };
+		requiredAddons[] = {"DZ_Data","DZ_Gear_Containers","DZ_Weapons_Firearms","DZ_Sounds_Weapons","DZ_Scripts" };//"OrdenTemplates",
 	};
 
-	class Orden_Weapon_Case_MagOptGl
+	class Orden_Bounty_Hunter_Case
 	{
-		units[] = { "Orden_Weapon_Case_MagOptGl" };
+		units[] = { "Orden_Bounty_Hunter_Case" };
 		weapons[] = { "Rifle_Base", "Magazine_Base" };
 		requiredVersion = 0.1;
-		requiredAddons[] = { "DZ_Data","DZ_Gear_Containers","DZ_Weapons_Firearms","OrdenTemplates","DZ_Weapons_Magazines","DZ_Weapons_Optics" };
+		requiredAddons[] = { "DZ_Data","DZ_Gear_Containers","DZ_Weapons_Firearms","DZ_Weapons_Magazines","DZ_Weapons_Optics" };//"OrdenTemplates",
 	};
 };
 class CfgSlots
@@ -376,12 +376,114 @@ class CfgVehicles
 	};
 	
 
-
-	class Orden_Weapon_Case_MagOptGl : Orden_Weapon_Case
+	//Bounty Hunter Case
+	//BountyHunterCase
+	class Orden_Bounty_Hunter_Case : Container_Base
 	{
-		displayName = "Кейс для оружия с магазинами";
-		descriptionShort = "Кейс для оружия с магазинами";
-		model = "OrdenWeaponCase\Cases\WeaponCaseMagOptGl.p3d";
+		scope = 2;
+		displayName = "$STR_cfgvehicles_Bounty_Hunter_Case";
+		descriptionShort = "$STR_cfgvehicles_Bounty_Hunter_Case";
+		model = "OrdenWeaponCase\Cases\BountyHunterCase.p3d";
+		SingleUseActions[] = { 527 };
+		InteractActions[] = { 1025, 1026 };
+		ContinuousActions[] = { 155 };
+		destroyOnEmpty = 0;
+		varQuantityDestroyOnMin = 0;
+		quantityBar = 0;
+		varQuantityMax = 0;
+		carveNavmesh = 1;
+		canBeDigged = 0;
+		heavyItem = 1;
+		weight = 5000;
+		itemSize[] = { 3, 8 };
+		itemBehaviour = 0;
+		physLayer = "item_large";
+		allowOwnedCargoManipulation = 1;
+		lootTag[] = { "Work" };
+		storageCategory = 1;
+		class Cargo
+		{
+			itemsCargoSize[] = { 10,5 }; // 50 слотов
+			openable = 0;
+			allowOwnedCargoManipulation = 1;
+		};
+		class AnimEvents {
+			class SoundWeapon {
+				class movement {
+					soundSet = "seachest_movement_SoundSet";
+					id = 1;
+				};
+
+				class pickUpItem_Light {
+					soundSet = "pickUpSeaChest_SoundSet";
+					id = 796;
+				};
+
+				class pickUpItem {
+					soundSet = "pickUpSeaChest_SoundSet";
+					id = 797;
+				};
+
+				class drop {
+					soundset = "seachest_drop_SoundSet";
+					id = 898;
+				};
+			};
+		};
+		class AnimationSources
+		{
+			class Door1
+			{
+				source = "user";
+				initPhase = 1;
+				animPeriod = 1;
+			};
+			class Drawer_Handle
+			{
+				source = "user";
+				initPhase = 0;
+				animPeriod = 1;
+			};
+
+			class Clap1
+			{
+				source = "user";
+				initPhase = 0;
+				animPeriod = 1;
+			};
+
+			class Clap2
+			{
+				source = "user";
+				initPhase = 0;
+				animPeriod = 1;
+			};
+
+			class Clap3
+			{
+				source = "user";
+				initPhase = 0;
+				animPeriod = 1;
+			};
+
+			class Clap4
+			{
+				source = "user";
+				initPhase = 0;
+				animPeriod = 1;
+			};
+		};
+
+		class DamageSystem
+		{
+			class GlobalHealth
+			{
+				class Health
+				{
+					hitpoints = 100000000000;
+				};
+			};
+		};
 
 
 		attachments[] = { "magProxy", "magProxy2", "magProxy3", "magProxy4", "optProxy1", "optProxy2", "glProxy1", "glProxy2","weaponProxy", "weaponProxy2" };
@@ -392,8 +494,7 @@ class CfgVehicles
 				name = "Оружие";
 				description = "";
 				attachmentSlots[] =
-				{
-					//"weaponProxy3", "weaponProxy4"
+				{ 
 					"weaponProxy", "weaponProxy2"
 				};
 				icon = "shoulderleft";
@@ -433,7 +534,7 @@ class CfgVehicles
 
 		};
 
-	}; // Orden_Weapon_Case_MagOptGl
+	}; // Orden_Bounty_Hunter_Case
 
 
 };
