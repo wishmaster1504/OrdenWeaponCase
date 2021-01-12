@@ -202,43 +202,34 @@ class Orden_Weapon_Case : Container_Base
 	
 	void SoundWeaponCaseOpenPlay()
 	{
-		//logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseOpenPlay START");
 		 
 		EffectSound sound =	SEffectManager.PlaySound( "weapon_case_open_SoundSet", GetPosition() );
 		sound.SetSoundAutodestroy( true );
-
-		//logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseOpenPlay END");
+		 
 	}
 
 	void SoundWeaponCaseClosePlay()
-	{
-		//logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseClosePlay START");
+	{ 
 		 
 		EffectSound sound =	SEffectManager.PlaySound( "weapon_case_close_SoundSet", GetPosition() );
 		sound.SetSoundAutodestroy( true );
-
-		//logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseClosePlay END");
+		 
 	}
 	 
 	void SoundWeaponCaseDrawerUpPlay()
-	{
-		//logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseDrawerUpPlay START");
+	{ 
 		 
 		EffectSound sound =	SEffectManager.PlaySound( "weapon_case_drawerup_SoundSet", GetPosition() );
 		sound.SetSoundAutodestroy( true );
-
-		//logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseDrawerUpPlay END");
+		 
 	}
 
 	void SoundWeaponCaseDrawerDownPlay()
-	{
-		//logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseDrawerDownPlay START");  
+	{ 
 
 		EffectSound sound =	SEffectManager.PlaySound( "weapon_case_drawerdown_SoundSet", GetPosition() );
 		sound.SetSoundAutodestroy( true );
-
-		//logFile.WrtiteToLogFile("FUNCTION SoundWeaponCaseDrawerDownPlay END");
-
+		  
 	}
 	 
 	void DetermineAction ( PlayerBase player )
@@ -295,31 +286,25 @@ class Orden_Weapon_Case : Container_Base
 	
 	
 	void DrawerUp()
-	{
-		//logFile.WrtiteToLogFile("FUNCTION DrawerUp START");
+	{ 
 		 
 		m_Drawer_Handle_Up = true; 
 		//SoundSynchRemote();
 		SoundSynchRemoteDrawer();
 
 		UpdateVisualState();
-
-		//logFile.WrtiteToLogFile("FUNCTION DrawerUp END");
-
+		  
 	}
 	
 	void DrawerDown()
-	{
-		//logFile.WrtiteToLogFile("FUNCTION DrawerDown START");
+	{ 
 
 		m_Drawer_Handle_Up = false; 
 		//SoundSynchRemote();
 		SoundSynchRemoteDrawer();
 
 		UpdateVisualState();
-
-		//logFile.WrtiteToLogFile("FUNCTION DrawerDown END");
-
+		 
 	}
 	  
 
