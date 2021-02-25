@@ -130,6 +130,18 @@ class CfgVehicles
         allowOwnedCargoManipulation = 1;
         lootTag[] = {"Work"};
         storageCategory = 1;    
+
+
+		hiddenSelections[] =
+		{
+			"all"
+		};
+		hiddenSelectionsTextures[] =
+		{ 
+			"OrdenWeaponCase\Cases\data\Orden_Weapon_Case.paa"
+		};
+
+
         class Cargo
         {
             itemsCargoSize[]={10,5}; // 50 слотов
@@ -264,7 +276,40 @@ class CfgVehicles
 		};
 	};
 	
+	class Orden_Weapon_Case_Metallic : Orden_Weapon_Case {
+
+		displayName = "$STR_cfgvehicles_Orden_Weapon_Case";
+		//descriptionShort = "$STR_cfgvehicles_Orden_Weapon_Case";
+		descriptionShort = "Metallic";
+		hiddenSelections[] =
+		{
+			"all"
+		};
+		hiddenSelectionsTextures[] =
+		{
+			"OrdenWeaponCase\Cases\data\T_FC1_Case12_MetallicSmoothness.paa"
+		};
+	};
+
+
+	class Orden_Weapon_Case_Albedo : Orden_Weapon_Case {
+
+		displayName = "$STR_cfgvehicles_Orden_Weapon_Case";
+		//descriptionShort = "$STR_cfgvehicles_Orden_Weapon_Case";
+		descriptionShort = "Albedo";
+		hiddenSelections[] =
+		{
+			"all"
+		};
+		hiddenSelectionsTextures[] =
+		{
+			"OrdenWeaponCase\Cases\data\T_FC1_Case12_AlbedoTransparency.paa"
+		};
+	};
+
 };
+
+
 
 class CfgNonAIVehicles
 {
